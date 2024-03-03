@@ -24,7 +24,7 @@ from django.contrib.auth.models import User
 class UserRegistrationView(FormView):
     template_name = 'user_registration.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('login')
     
     def form_valid(self,form):
         print(form.cleaned_data)
@@ -43,8 +43,6 @@ class UserRegistrationView(FormView):
         email.attach_alternative(email_body, "text/html")
         email.send()
         return super().form_valid(form)
-        # return Response("Check your mail for confirmation") and super().form_valid(form)
-
 
         # login(self.request, user)
         # print(user)
