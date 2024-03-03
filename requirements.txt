@@ -1,7 +1,7 @@
 asgiref
-attrs   
+attrs
 autopep8
-certifi 
+certifi
 charset-normalizer
 colorama
 crispy-bootstrap5
