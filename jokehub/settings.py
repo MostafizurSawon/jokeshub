@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'jokehub.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default=end("DB_URL"),
+        default=env("DB_URL"),
     )
 }
 
