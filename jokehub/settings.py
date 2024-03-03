@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'jokehub.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://book_g696_user:hSFn84z7wQGJH5kklSMKHn7GdBH94Pj7@dpg-cneaoaed3nmc738okadg-a.oregon-postgres.render.com/book_g696',
+        default=end("DB_URL"),
     )
 }
 
