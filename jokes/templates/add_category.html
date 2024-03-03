@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% block title %}
+<title>Add Category Page | JokesHub</title>
+{% endblock %} 
+{% block content %} 
+<form class="w-50 mx-auto mt-5 p-4 shadow" method="post">
+    <h3 class="text-center pb-2 border-bottom border-info mb-4">Add a new Category</h3>
+    {% csrf_token %}
+    {{form | crispy}}
+    <small class="text-warning"><i>Note: slug field cannot contain any space! Example: Name: blond joke Slug: blond-joke</i></small>
+    <br>
+    <button class="btn btn-warning mb-5 mt-2">Submit</button>
+</form>
+{% endblock %}
