@@ -24,6 +24,8 @@ environ.Env.read_env()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+ALLOWED_HOSTS = ["*"]
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 CSRF_TRUSTED_ORIGINS = ['https://jokeshub.onrender.com','https://*.127.0.0.1']
@@ -31,7 +33,6 @@ CSRF_TRUSTED_ORIGINS = ['https://jokeshub.onrender.com','https://*.127.0.0.1']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
