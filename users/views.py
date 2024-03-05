@@ -38,15 +38,10 @@ class UserRegistrationView(FormView):
         confirm_link = f"https://jokeshub.onrender.com/users/activate/{uid}/{token}"
         email_subject = "Confirm Your Email"
         email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
-        
         email = EmailMultiAlternatives(email_subject , '', to=[user.email])
         email.attach_alternative(email_body, "text/html")
         email.send()
         return super().form_valid(form)
-
-        # login(self.request, user)
-        # print(user)
-        # return super().form_valid(form)
 
 def activate(request, uid64, token):
     try:
