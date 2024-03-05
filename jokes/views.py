@@ -31,7 +31,7 @@ class AddCategoryCreateView(CreateView):
         return super().form_valid(form)
 
 
-
+@method_decorator(login_required, name='dispatch')
 class JokeDetailView(DetailView):
     model = Joke
     template_name = 'joke_detail.html'
@@ -57,7 +57,7 @@ class JokeDetailView(DetailView):
         
         return context
 
-    
+@login_required
 def share_joke(request, id):
     if not request.user.is_authenticated:
         return redirect("user_login") 
@@ -66,6 +66,7 @@ def share_joke(request, id):
     joke.save()
     return redirect("profile")
 
+@login_required
 def like_joke(request, id):
     if not request.user.is_authenticated:
         return redirect("user_login") 

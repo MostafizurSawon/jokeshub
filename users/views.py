@@ -70,6 +70,7 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
+
 class ProfileView(TemplateView):
     template_name = 'profile.html'
     
@@ -85,9 +86,6 @@ def profile(request):
     shared_jokes = Joke.objects.filter(shared_jokes = request.user)
     return render(request, 'profile.html', { 'shared_jokes' : shared_jokes, 'user' : user})
 
-    
-def profileHome(request):
-    shared_jokes = Joke.objects.filter(shared_jokes = shared_jokes)
-    return render(request, 'profile.html', { 'shared_jokes' : shared_jokes })
+
 
     
