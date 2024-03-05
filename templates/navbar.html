@@ -7,18 +7,14 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
+        {% if request.user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'addJoke' %}">Add Joke</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="{% url 'addCategory' %}">Add Category</a>
         </li>
-
-        {% comment %} {% if request.user.is_authenticated %}
-          <li class="nav-item mx-3">
-            <a class="nav-link" href="{% url 'deposit_money' %}">Deposit Money</a>
-          </li>
-        {% endif %} {% endcomment %}
+        {% endif %}
       </ul>
       <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">

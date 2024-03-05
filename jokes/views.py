@@ -65,3 +65,12 @@ def share_joke(request, id):
     joke.shared_jokes = request.user 
     joke.save()
     return redirect("profile")
+
+def like_joke(request, id):
+    if not request.user.is_authenticated:
+        return redirect("user_login") 
+    joke = Joke.objects.get(id = id)
+    joke.like+=1
+    joke.shared_jokes = request.user 
+    joke.save()
+    return redirect("profile")

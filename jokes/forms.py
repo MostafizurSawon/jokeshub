@@ -6,7 +6,7 @@ class JokeForm(forms.ModelForm):
     class Meta: 
         model = Joke
         # fields = '__all__'
-        exclude = ['like','owner','created_on']
+        exclude = ['like','owner','created_on', 'shared_jokes']
     
         
 class CategoryForm(forms.ModelForm):

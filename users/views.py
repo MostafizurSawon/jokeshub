@@ -10,7 +10,6 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from jokes.models import Joke
 
-
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
@@ -34,6 +33,8 @@ class UserRegistrationView(FormView):
         print("token ", token)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         print("uid ", uid)
+
+        # sometimes working sometimes not working the verfication email link
         # confirm_link = f"http://127.0.0.1:8000/users/activate/{uid}/{token}"
         confirm_link = f"https://jokeshub.onrender.com/users/activate/{uid}/{token}"
         email_subject = "Confirm Your Email"
@@ -69,20 +70,24 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
-# class ProfileView(TemplateView):
-#     template_name = 'profile.html'
+class ProfileView(TemplateView):
+    template_name = 'profile.html'
     
-#     def get_context_data(self,*args, **kwargs):
-#         context = super().get_context_data(*args,**kwargs)
-#         # context['books'] = Book.objects.all()
-#         # context['categories'] = Category.objects.all()
-#         return context
+    def get_context_data(self,*args, **kwargs):
+        context = super().get_context_data(*args,**kwargs)
+        context['jokes'] = Joke.objects.all()
+        # context['categories'] = Category.objects.all()
+        return context
 
 @login_required
 def profile(request):
     user = request.user
     shared_jokes = Joke.objects.filter(shared_jokes = request.user)
-    # user = request.user
     return render(request, 'profile.html', { 'shared_jokes' : shared_jokes, 'user' : user})
+
+    
+def profileHome(request):
+    shared_jokes = Joke.objects.filter(shared_jokes = shared_jokes)
+    return render(request, 'profile.html', { 'shared_jokes' : shared_jokes })
 
     

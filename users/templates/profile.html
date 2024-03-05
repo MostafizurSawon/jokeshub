@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%  load crispy_forms_tags %}
 {% block title %}
-<title>User Profile | BookHub</title>
+<title>User Profile | JokesHub</title>
 {% endblock %} 
 {% block content %} 
 
@@ -42,7 +42,7 @@
 <div class="container shadow py-2 mt-4">
   {% if shared_jokes|length != 0%}
 <div class="my-5 container-fluid">
-  <h2 class="border-bottom border-info pb-2 text-center">Your have Shared <span class="text-success">{{shared_jokes | length}}</span> Jokes. </h1>
+  <h2 class="border-bottom border-info pb-2 text-center">Your have Shared / Liked <span class="text-success">{{shared_jokes | length}}</span> Jokes. </h1>
   <div class="row my-4 gy-4 d-flex justify-content-center">
   {% for joke in shared_jokes %}
       <div class="col-md-12 d-flex justify-content-center w-100">
@@ -54,7 +54,6 @@
               </div>
               <div class="col-md-10">
                 <h2 class="text-primary me-3">{{ joke.owner.first_name }} {{ joke.owner.last_name }}</h2>
-                {% comment %} <h2 class="text-primary me-3">{{ joke.owner.first_name }} {{ joke.owner.last_name }} ({{ joke.owner }})</h2> {% endcomment %}
 
                 <div class="d-flex align-items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar text-muted" viewBox="0 0 16 16">
