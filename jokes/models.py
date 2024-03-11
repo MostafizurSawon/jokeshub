@@ -45,10 +45,21 @@ class Comment(models.Model):
         # Check if the name and email fields are empty
         if not self.name or not self.email:
             # Assign the name and email of the logged-in user
+            print(self.joke.owner.first_name)
             if self.joke.owner:
                 self.name = self.joke.owner.first_name + ' ' + self.joke.owner.last_name
                 self.email = self.joke.owner.email
         super().save(*args, **kwargs)
+        
+    # def save(self, *args, **kwargs):
+    #     # Check if the name and email fields are empty
+    #     if not self.name or not self.email:
+    #         # Assign the name and email of the logged-in user
+    #         print(self.joke.owner.first_name)
+    #         if self.joke.owner:
+    #             self.name = self.joke.owner.first_name + ' ' + self.joke.owner.last_name
+    #             self.email = self.joke.owner.email
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Comments by {self.name}"
