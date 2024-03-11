@@ -37,6 +37,13 @@ def home(request, category_slug = None):
     categories = Category.objects.all()
     return render(request, 'home.html', {'jokes' : jokes, 'categories' : categories})
 
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+
 def filter_home(request, category):
     categories = Category.objects.all()
     category = get_object_or_404(Category, name=category)
