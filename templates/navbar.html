@@ -1,57 +1,52 @@
-<nav class="py-3 sticky-top navbar navbar-expand-lg navbar-primary bg-primary">
+<nav class="py-3 sticky-top navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="d-flex justify-content-center align-items-center gap-1 rounded-3 border border-warning h4 me-4">
-      <div class="text-light fw-bold ps-3 py-2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-video2" viewBox="0 0 16 16">
-          <path d="M10 9.05a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
-          <path d="M2 1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zM1 3a1 1 0 0 1 1-1h2v2H1zm4 10V2h9a1 1 0 0 1 1 1v9c0 .285-.12.543-.31.725C14.15 11.494 12.822 10 10 10c-3.037 0-4.345 1.73-4.798 3zm-4-2h3v2H2a1 1 0 0 1-1-1zm3-1H1V8h3zm0-3H1V5h3z"/>
-        </svg>
+    <div class="d-flex justify-content-center align-items-center gap-1 rounded-3 h4 me-4 logo">
+      <div class="text-warning fw-bold ps-3 py-2 rotate">
+        <i class="fa-regular fa-face-grin-squint-tears"></i>
       </div>
       <div class="py-2">
-        <a class="navbar-brand text-light" href="{% url 'home' %}">JokesHub</a>
+        <a class="navbar-brand text-warning" href="{% url 'home' %}">JokesHub</a>
       </div>
     </div>
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bolder">
-        <li class="nav-item">
-          <a class="nav-link text-warning" aria-current="page" href="{% url 'home' %}">Home</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li style="width: 70px;" class="nav-item hover-2">
+          <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-warning" aria-current="page" href="{% url 'about' %}">About Us</a>
+        <li style="width: 90px;" class="nav-item hover-2">
+          <a class="nav-link text-light" aria-current="page" href="{% url 'about' %}">About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-warning" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
+        <li style="width: 110px;" class="nav-item hover-2">
+          <a class="nav-link text-light" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
         </li>
         {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link text-warning" aria-current="page" href="{% url 'addJoke' %}">Add Joke</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-warning" aria-current="page" href="{% url 'addCategory' %}">Add Category</a>
-        </li>
+          <li style="width: 100px;" class="nav-item hover-2">
+            <a class="nav-link text-light" aria-current="page" href="{% url 'addJoke' %}">Add Joke</a>
+          </li>
+          <li class="nav-item hover-2">
+            <a class="nav-link text-light" aria-current="page" href="{% url 'addCategory' %}">Add Category</a>
+          </li>
         {% endif %}
       </ul>
-      <div class="d-flex">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bolder">
-          {% if request.user.is_authenticated %}
-            <li class="nav-item mx-3">
-              <a class="nav-link text-warning text-info" href="{% url 'profile' %}">Profile</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item mx-3">
-              <a type="button" class="btn btn-outline-light" href="{% url 'register' %}">Register</a>
-            </li>
-            <li class="nav-item">
-              <a type="button" class="btn btn-success p-2" href="{% url 'login' %}">Login</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+      <form class="d-flex" role="search">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item me-3">
+          <a style="--clr:#ADFF2F" class="button reg" href="{% url 'profile' %}"><span>Profile</span><i></i></a>
+        </li>
+          <li class="nav-item login">
+            <a style="--clr:#ff0000" class="button" href="{% url 'logout' %}"><span>Logout</span><i></i></a>
+          </li>
+        {% else %}
+          <li class="nav-item me-3">
+            <a style="--clr:#0FF0FC" class="button reg" href="{% url 'register' %}"><span>Register</span><i></i></a>
+          </li>
+          <li class="nav-item login">
+            <a style="--clr:#39FF14" class="button " href="{% url 'login' %}"><span>Login</span><i></i></a>
+          </li>
+        {% endif %}
+      </form>
     </div>
   </div>
 </nav>
