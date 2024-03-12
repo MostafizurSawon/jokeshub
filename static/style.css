@@ -191,13 +191,14 @@ h1{
   font-weight: lighter;
   letter-spacing: 2px;
   transition: 1s box-shadow;
-}
-
-.logo:hover {
   box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
 }
 
-.logo:hover::before, .logo:hover::after {
+/* .logo {
+  box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+} */
+
+.logo::before, .logo::after {
   display: block;
   content: '';
   position: absolute;
@@ -209,7 +210,7 @@ h1{
   animation: 1s clockwise infinite;
 }
 
-.logo:hover:after {
+.logo:after {
   background: whitesmoke;
   animation: 2s counterclockwise infinite;
 }
@@ -308,9 +309,3 @@ h1{
 
 
 
-
-/* joke */
-.joke{
-  background-repeat: no-repeat;
-  background-size: cover;
-}
