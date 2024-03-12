@@ -153,7 +153,7 @@ h1{
 
 .hover-2 {
   --b: 0.1em;   /* the thickness of the line */
-  --c: #1095c1; /* the color */
+  --c: #f0e24a; /* the color */
   width: 130px;
   
   color: #d0c04700;
@@ -168,7 +168,7 @@ h1{
 .hover-2:hover {
   --_p: 100%;
   --_s: .3s;
-  color: #1095c1;
+  color: #f1d237;
   font-weight: 800;
 }
 
@@ -307,8 +307,10 @@ h1{
 }
 
 
-.nav-cus{
-  color: red;
+
+
+/* joke */
+.joke{
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-
