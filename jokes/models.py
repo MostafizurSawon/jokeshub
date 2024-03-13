@@ -43,21 +43,18 @@ class Comment(models.Model):
     body = models.TextField(verbose_name="Your Comment : ")
     created_on = models.DateTimeField(auto_now_add=True) # jkhn e ei class er object toiri hobe sei time ta rekhe dibe
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        
     # def save(self, *args, **kwargs):
     #     # Check if the name and email fields are empty
-    #     self.name = self.user.first_name + ' ' + self.user.last_name
-    #     self.email = self.user.email
+    #     if not self.name or not self.email:
+    #         # Assign the name and email of the logged-in user
+    #         print(self.joke.owner.first_name)
+    #         if self.joke.owner:
+    #             self.name = self.joke.owner.first_name + ' ' + self.joke.owner.last_name
+    #             self.email = self.joke.owner.email
     #     super().save(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        # Check if the name and email fields are empty
-        if not self.name or not self.email:
-            # Assign the name and email of the logged-in user
-            print(self.joke.owner.first_name)
-            if self.joke.owner:
-                self.name = self.joke.owner.first_name + ' ' + self.joke.owner.last_name
-                self.email = self.joke.owner.email
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Comments by {self.name}"

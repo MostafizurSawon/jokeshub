@@ -42,6 +42,8 @@ class JokeDetailView(DetailView):
         joke = self.get_object()
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
+            if request.user.is_authenticated:
+                new_comment.name = request.user.first_name + ' ' + request.user.last_name
             new_comment.joke = joke
             new_comment.save()
         return self.get(request, *args, **kwargs)
@@ -50,6 +52,7 @@ class JokeDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         joke = self.object
         comments = joke.comments.all()
+        # initial_data = {'username': self.request.user.username}
         comment_form = forms.CommentForm()
         
         context['comments'] = comments
