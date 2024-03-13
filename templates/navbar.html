@@ -16,22 +16,24 @@
           <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li style="width: 90px;" class="nav-item hover-2">
-          <a class="nav-link text-light" aria-current="page" href="{% url 'about' %}">About Us</a>
-        </li>
-        <li style="width: 110px;" class="nav-item hover-2">
-          <a class="nav-link text-light" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
-        </li>
-        <li style="width: 110px;" class="nav-item hover-2">
           <a class="nav-link text-light" aria-current="page" href="{% url 'all_jokes' %}">All Jokes</a>
         </li>
+        
+        
         {% if request.user.is_authenticated %}
-          <li style="width: 100px;" class="nav-item hover-2">
+          <li style="width: 90px;" class="nav-item hover-2">
             <a class="nav-link text-light" aria-current="page" href="{% url 'addJoke' %}">Add Joke</a>
           </li>
           <li class="nav-item hover-2">
             <a class="nav-link text-light" aria-current="page" href="{% url 'addCategory' %}">Add Category</a>
           </li>
         {% endif %}
+        <li style="width: 90px;" class="nav-item hover-2">
+          <a class="nav-link text-light" aria-current="page" href="{% url 'about' %}">About Us</a>
+        </li>
+        <li style="width: 110px;" class="nav-item hover-2">
+          <a class="nav-link text-light" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         {% if request.user.is_authenticated %}
