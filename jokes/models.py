@@ -9,12 +9,14 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Joke(models.Model):
     description = models.TextField()
     like = models.IntegerField(default=0)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True, null=True, blank=True)
     categories = models.ManyToManyField(Category, related_name="categories")
+    shared_condition = models.BooleanField(default=False)
     shared_jokes = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True, related_name = 'shared')
     # liked_jokes = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True, related_name = 'shared')
     

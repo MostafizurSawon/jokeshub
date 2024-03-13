@@ -63,6 +63,7 @@ def share_joke(request, id):
         return redirect("user_login") 
     joke = Joke.objects.get(id = id)
     joke.shared_jokes = request.user 
+    joke.shared_condition = True
     joke.save()
     return redirect("profile")
 
