@@ -74,4 +74,12 @@ def like_joke(request, id):
     joke.like+=1
     joke.shared_jokes = request.user 
     joke.save()
-    return redirect("profile")
+    return redirect("all_jokes")
+
+def all_jokes(request, category_slug = None):
+    jokes = Joke.objects.all()
+    if category_slug is not None:
+        categories = Category.objects.get(slug = category_slug)
+        jokes = Joke.objects.filter(categories  = categories)
+    categories = Category.objects.all()
+    return render(request, 'show_jokes_main.html', {'jokes' : jokes, 'categories' : categories})

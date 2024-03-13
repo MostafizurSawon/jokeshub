@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', HomeView.as_view(), name="home"),
     path('', home, name="home"),
-    path('category/<slug:category_slug>/', home, name="filter"),
+    # path('category/<slug:category_slug>/', home, name="filter"),
     path('accounts/', include("users.urls")),
     path('jokes/', include("jokes.urls")),
     path('reviews/', include("reviews.urls")),
