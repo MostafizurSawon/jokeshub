@@ -25,7 +25,7 @@ environ.Env.read_env()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://jokeshub.onrender.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://jokeshub.onrender.com','http://127.0.0.1:8000/']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
