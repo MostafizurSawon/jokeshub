@@ -35,7 +35,8 @@ def home(request, category_slug = None):
         categories = Category.objects.get(slug = category_slug)
         jokes = Joke.objects.filter(categories  = categories)
     categories = Category.objects.all()
-    return render(request, 'home.html', {'jokes' : jokes, 'categories' : categories})
+    h_joke = jokes.order_by('-like').first()
+    return render(request, 'home.html', {'jokes' : jokes, 'categories' : categories, 'hjoke' : h_joke})
 
 def about(request):
     return render(request, 'about.html')
