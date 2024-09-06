@@ -34,3 +34,10 @@ class UserAccount(models.Model):
     def __str__(self):
         return self.user.username
     
+class UserProfile(models.Model):
+    points = models.IntegerField(default=0, blank=True)
+    user = models.ForeignKey(User, related_name='profile_account', on_delete=models.CASCADE)
+    mobile = models.CharField(max_length=14, blank=True)
+    
+    def _str_(self):
+        return self.user.username

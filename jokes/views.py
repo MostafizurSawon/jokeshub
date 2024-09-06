@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView,UpdateView,DeleteView,DetailView
 from reviews.forms import ReviewForm
 from . import forms
+from users.models import UserProfile
 
 # Create your views here.
 
@@ -16,9 +17,20 @@ class AddJokeCreateView(CreateView):
     form_class = forms.JokeForm
     template_name = 'add_jokes.html'
     success_url = reverse_lazy('addJoke')
+    
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        
+        # Save the form to get the joke instance
+        response = super().form_valid(form)
+        
+        # Update the user's profile points after saving the joke
+        user_profile = UserProfile.objects.filter(user=self.request.user).first()
+        if user_profile:
+            user_profile.points += 10
+            user_profile.save()
+        
+        return response
 
 @method_decorator(login_required, name='dispatch')
 class AddCategoryCreateView(CreateView):

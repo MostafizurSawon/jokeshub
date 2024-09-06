@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from jokes.models import Joke
+from . models import UserProfile
 
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -83,8 +84,13 @@ class ProfileView(TemplateView):
 @login_required
 def profile(request):
     user = request.user
-    shared_jokes = Joke.objects.filter(shared_jokes = request.user)
-    return render(request, 'profile.html', { 'shared_jokes' : shared_jokes, 'user' : user})
+    # print('profile->',user.email,dir(user))
+    shared_jokes = Joke.objects.filter(shared_jokes = user)
+    user_jokes = Joke.objects.filter(owner=user)
+    # print(user_jokes)
+    user_profile = UserProfile.objects.filter(user=user).first()
+    # print(user_profile.points)
+    return render(request, 'profile.html', { 'shared_jokes' : shared_jokes, 'user' : user, 'user_profile': user_profile, 'user_jokes': user_jokes})
 
 
 
