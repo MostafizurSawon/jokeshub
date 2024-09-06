@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+import random
 
 class UserAccount(models.Model):
     PIC_CHOICES = [
@@ -10,6 +11,7 @@ class UserAccount(models.Model):
         (4, 'https://img.freepik.com/premium-photo/fun-asian-teenager-animation_183364-30921.jpg'),
         (5, 'https://img.freepik.com/free-vector/portrait-shorthaired-woman_1308-134103.jpg'),
     ]
+    # 5=female, 3,4=same male, 1=female, 2=male
     user = models.OneToOneField(User, related_name='account', on_delete=models.CASCADE)
     verify = models.BooleanField(default=False)
     pic = models.URLField(choices=PIC_CHOICES, default=3)
@@ -25,6 +27,8 @@ class UserAccount(models.Model):
     #     super().save(*args, **kwargs)
 
     def save(self, *args, **kwargs):
+        if not self.pk:  # Check if the instance is being created (i.e., it doesn't have a primary key yet)
+            self.pic = random.choice(self.PIC_CHOICES)[1]  # Randomly select the URL from PIC_CHOICES
         super(UserAccount, self).save(*args, **kwargs)
     
     def __str__(self):
