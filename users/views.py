@@ -37,7 +37,7 @@ class UserRegistrationView(FormView):
 
         # sometimes working sometimes not working the verfication email link
         # confirm_link = f"http://127.0.0.1:8000/users/activate/{uid}/{token}"
-        confirm_link = f"https://jokeshub.onrender.com/users/activate/{uid}/{token}"
+        confirm_link = f"https://jokeshub.onrender.com/accounts/activate/{uid}/{token}/"
         email_subject = "Confirm Your Email"
         email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
         email = EmailMultiAlternatives(email_subject , '', to=[user.email])
